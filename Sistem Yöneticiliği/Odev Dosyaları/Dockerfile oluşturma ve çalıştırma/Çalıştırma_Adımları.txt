@@ -1,0 +1,23 @@
+Dockerfile build edilmesi
+    $docker build -t enginyenice/sistem-yoneticiligi-odev:0.0.1 .
+
+
+Tag: sy-covid-app
+Dockerfile dosyası bu bizinde olduğu için . ile belirttik.
+
+-------------------------------------------------------------------------------------------------------
+
+Build edilen image'ın çaluştırılması
+    $ docker run  -d  --rm -p 8080:80  --name sy-running-app enginyenice/sistem-yoneticiligi-odev:0.0.1
+
+
+
+ -d, --detach           				Arka planda çalıştırır.
+--rm                    				Aynı isimde container varsa eğer onu siler.
+sy-running-app    					Çalıştırılan container'ın adı.
+enginyenice/sistem-yoneticiligi-odev:0.0.1             	Image'ın ismi
+
+
+
+DockerHub yükleme işlemi
+docker push enginyenice/sistem-yoneticiligi-odev:0.0.1

@@ -1,0 +1,13 @@
+Terraform dosyamızı ilk olarak init edelim.
+	$terraform init
+
+Ardından terraform uygulamamızı apply edelim.
+	$terraform apply
+
+Digitalocean'a ait olan token'ımızı girelim.
+
+Karşımıza gelicek bilgilendirici metinden sonra 
+	$yes
+komutunu çalıştıralım.
+
+Droplet oluşturulma işlemim tamamlandıktan sonra droplet'e ait bilgiler konsol ekranı üzerinden görüntülenecektir.

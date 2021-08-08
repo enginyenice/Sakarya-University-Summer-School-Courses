@@ -1,0 +1,9 @@
+Terraform dosyamızı ilk olarak init edelim.
+	$terraform init
+
+Ardından terraform uygulamamızı apply edelim.
+	$terraform apply
+
+Karşımıza gelicek bilgilendirici metinden sonra 
+	$yes
+komutunu çalıştıralım ve localhost:8080 portundan kontrol edelim.
