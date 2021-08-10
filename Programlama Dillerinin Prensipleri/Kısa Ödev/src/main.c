@@ -3,21 +3,30 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *Lines;
+// 2 basamaklı bir sayıysa eğer rakamlarını toplar.
 int SumOfDigits(int value);
+// Luhn algoritması başlatılır.
 void LuhnFunc(char *number);
+// Input.txt dosyasını okur.
 void ReadFile(char *file_name);
-char *UnnecessaryCleaner(char *array, int arrayLenght);
+// Gereksiz karakterleri temizle ve kart numarasını tersine çevir.
+char *UnnecessaryCleanerAndReverser(char *array, int arrayLenght);
+// Luhn algoritmasına göre sayıların toplamını hesapla
 int CalculateNumbers(char *justNumbers, int justNumbersLenght);
+
 int main(void)
 {
-
-    ReadFile("inputs.txt");
-    
-    int count = 0;
+    char file_name[255];
+    printf("\n\n\nCalistirma yontemi\n");
+    printf("------------------------\n");
+    printf("--\tAyni klasordeyse dosya ismini giriniz.\n--\tAlt klasordeyse eger klasor_adi/dosya_adi seklinde giris yapiniz.\n---Makefile dosyasi ile calistirip bin/inputs.txt dosyasini okumak icin bin/inputs.txt diyerek calistirabilirsiniz.\n\n");
+    printf("Dosya yolunu giriniz: \n");
+    scanf("%s", file_name);
+    ReadFile(file_name);
 }
 void ReadFile(char *file_name)
 {
+
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
@@ -25,7 +34,10 @@ void ReadFile(char *file_name)
 
     fp = fopen(file_name, "r");
     if (fp == NULL)
+    {
+        printf("\n\nDosya yolu bulunamadi...\n\n");
         exit(EXIT_FAILURE);
+    }
 
     int lineCount = 1;
     while ((read = getline(&line, &len, fp)) != -1)
@@ -48,20 +60,13 @@ void LuhnFunc(char *numbers)
     }
 
     int arrayLenght = strlen(numbers);
-    char *justNumbers = UnnecessaryCleaner(numbers, arrayLenght);
+    char *justNumbers = UnnecessaryCleanerAndReverser(numbers, arrayLenght);
     int justNumbersLenght = strlen(justNumbers);
     int totalValue = CalculateNumbers(justNumbers, justNumbersLenght);
+
     int result = totalValue % 10;
-    printf("%s", numbers);
-    printf(" - ");
-    if (result % 10 == 0)
-    {
-        printf("Gecerli\n");
-    }
-    else
-    {
-        printf("Gecersiz\n");
-    }
+    char *isValid = result == 0 ? "Gecerli" : "Gecersiz";
+    printf("%s - %s\n", numbers, isValid);
 }
 int CalculateNumbers(char *justNumbers, int justNumbersLenght)
 {
@@ -76,7 +81,6 @@ int CalculateNumbers(char *justNumbers, int justNumbersLenght)
             ;
         }
         total += value;
-        // printf("Val: %d\t\tDef: %d\t\tIndex: %d\t\tLenght %d\n",value, (justNumbers[i] - 48),i,justNumbersLenght);
     }
 
     for (int i = 0; i < justNumbersLenght - 1; i += 2)
@@ -93,7 +97,7 @@ int SumOfDigits(int value)
     int smallStep = value % 10;
     return bigStep + smallStep;
 }
-char *UnnecessaryCleaner(char *array, int arrayLenght)
+char *UnnecessaryCleanerAndReverser(char *array, int arrayLenght)
 {
 
     char justNumbers[arrayLenght];
