@@ -19,7 +19,7 @@ int main(void)
 {
     //Clear Output
     FILE *fp;
-    fp = fopen("output.txt", "w+");
+    fp = fopen("outputs.txt", "w+");
     fprintf(fp, " ");
     fclose(fp);
     //Clear Output
@@ -75,7 +75,7 @@ void LuhnFunc(char *numbers)
 void WriteFile(char *output)
 {
     FILE *fp;
-    fp = fopen("output.txt", "a+");
+    fp = fopen("outputs.txt", "a+");
     fprintf(fp, "%s\n", output);
     fclose(fp);
 }
