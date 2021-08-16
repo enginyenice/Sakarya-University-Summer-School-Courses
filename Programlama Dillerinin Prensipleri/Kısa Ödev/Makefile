@@ -1,14 +1,9 @@
-BIN = ./bin/
-INC = ./include/
-LIB= ./lib/
-SRC= ./src/
-
 buildandrun:program starter
 program:main
-	gcc ${LIB}main.o -o ${BIN}program
+	gcc main.o -o program
 
 main:
-	gcc -c ${SRC}main.c -o ${LIB}main.o
+	gcc -c main.c -o main.o
 
 starter:
-	${BIN}program.exe
+	program.exe
