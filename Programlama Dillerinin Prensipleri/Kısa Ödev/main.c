@@ -25,6 +25,7 @@ int main(void)
     //Clear Output
 
     ReadFile("inputs.txt");
+    system("PAUSE");
 }
 void ReadFile(char *file_name)
 {
@@ -51,7 +52,6 @@ void ReadFile(char *file_name)
     if (line)
         free(line);
 
-    exit(EXIT_SUCCESS);
 }
 void LuhnFunc(char *numbers)
 {
