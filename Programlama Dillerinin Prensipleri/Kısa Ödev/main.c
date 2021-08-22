@@ -1,4 +1,5 @@
 #define _GNU_SOURCE
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,7 +52,6 @@ void ReadFile(char *file_name)
     fclose(fp);
     if (line)
         free(line);
-
 }
 void LuhnFunc(char *numbers)
 {
