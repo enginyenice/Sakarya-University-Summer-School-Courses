@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <stdlib.h>
 #include"../lib/FileOperation.h"
 const char*InputFilePath="doc/inputs.txt";
 const char*OutputFilePath="doc/outputs.txt";
@@ -31,6 +32,25 @@ int GetLineCount(){
 	int ch=0;
 	FILE*fp;
     fp=fopen(InputFilePath,"r");
+	
+	
+	 if (fp == NULL)
+    {
+        printf("\n---Dosya yolu bulunamadi...\n");
+		printf("\n-----doc klasoru altina inputs.txt dosyasi olusturunuz.\n");
+		printf("\n-----Ornek icerik\n");
+		printf("1234 1453 1323 4355\n");
+		printf("1234 1453 1323 4356\n");
+		printf("4548 4746 6285 2621\n");
+		printf("4548 4746 6285 2622\n");
+		printf("-------------------\n");
+
+
+        exit(EXIT_FAILURE);
+    }
+
+	
+	
 	while(!feof(fp))
 	{
 	  ch=fgetc(fp);
